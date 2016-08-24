@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.8.4/jquery.fullPage.css"/>
+    <link rel="stylesheet" href="css/page.css"/>
+</head>
+<body>
+        <div id="fullPage">
+            <div class="section section1">
+                <h1>它，终于来了</h1>
+                <p>
+                    为了充分发挥体积下以及佩戴于手腕的优势，apple watch 带来全新的科技和互动方式。它可以让你更快便捷的完成一些早已习惯的事
+                    也可实现过去无法企及的新功能。因此这将会是焕然一新的使用体验，也将实现以你前所未有的贴近。
+                </p>
+                <a href="#">进一步了解</a>
+            </div>
+
+
+            <div class=" section section2">
+                <h1>真正与贴近的个人设备</h1>
+                <a href="#">进一步了解</a>
+            </div>
+
+
+            <div class="section section3">
+                <h1>非同一般的精准计时</h1>
+                <p>
+                    高级手表想来一计时精准为本，apple watch 更是如此。它与你的iphone 配合使用，同全球标准时间的误差不超过50毫秒。而且，你可以
+                    对表盘进行个性化设定，以便更个性和意义的方式显示时间，使其更贴近你的生活和日常需要。
+                </p>
+                <a href="#">进一步了解计时</a>
+            </div>
+
+            <div class="section section4">
+                <h1>在三个贴点鲜明的系列中找到你的风格</h1>
+                <div class="row">
+                    <div class="column">
+                        <img src="images/primary_large_2x.jpg" class="primary">
+                        <h4 class="primary"></h4>
+
+                        <div class="intro">
+                            <p>不锈钢或深空黑色不锈钢表壳，蓝宝石水晶镜面，搭配多款时尚表带</p>
+                            <a href="#" class="more">了解更多</a>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <img src="images/sport_large_2x.jpg" class="sport">
+                        <h4 class="sport"></h4>
+
+                        <div class="intro">
+                            <p>银色或升空蓝的样机金属壳，强化lon-x 玻璃，搭配亮丽的柔光的表带</p>
+                            <a href="#" class="more">了解更多</a>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <img src="images/edition_large_2x.jpg" class="edition">
+                        <h4 class="edition"></h4>
+
+                        <div class="intro">
+                            <p>18k 黄金或玫瑰金壳。蓝宝石水晶面，搭配精细吸啄的表带及表扣</p>
+                            <a href="#" class="more">了解更多</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="js/jquery.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.8.4/jquery.fullPage.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/move.js/0.5.0/move.min.js"></script>
+        <script>
+            $(function(){
+                $("#fullPage").fullpage({
+                    verticalCentered:false, //是否居中
+                    anchors:['page1','page2','page3','page4'], //锚链接
+                    navigation:true,//是否显示导航栏
+                    navigationTooltips:['它，终于来了','真正与你贴近的个人设备','非同一般的精准计时','在三个特点鲜明的系列中找到你的风格'],//鼠标移入显示的内容
+                    afterLoad:function(link,index){
+                        switch (index){
+                            case 1:
+                                    move('.section1 h1').scale(1.5).end();
+                                    move('.section1 p').set('margin-top','5%').end();
+                                break;
+                            case 2:
+                                    move('.section2 h1').scale(0.7).end();
+                                break;
+                            case 3:
+                                    move('.section3 h1').set('margin-left','20%').end();
+                                    move('.section3 p').set('margin-left','20%').end();
+                                break;
+                            case 4:
+                                    move('.section4 img.primary').rotate(360).end(function(){
+                                       move('.section4 img.sport').rotate(360).end(function(){
+                                          move('.section4 img.edition').rotate(360).end(function(){
+                                             move('.section4 h4.primary').scale(1.3).end(function(){
+                                                move('.section4 h4.sport').scale(1.3).end(function(){
+                                                    move('.section4 h4.edition').scale(1.3).end();
+                                                 });
+                                             });
+                                          });
+                                       });
+                                    });
+                                break;
+                            default:
+                                break;
+                        }
+                    },
+                    onLeave:function(link,index){
+                        switch (index){
+                            case 1:
+                                move('.section1 h1').scale(1).end();
+                                move('.section1 p').set('margin-top','800px').end();
+                                break;
+                            case 2:
+                                move('.section2 h1').scale(1).end();
+                                break;
+                            case 3:
+                                move('.section3 h1').set('margin-left','-1500px').end();
+                                move('.section3 p').set('margin-left','1500px').end();
+                                break;
+                            case 4:
+                                move('.section4 img.primary').rotate(-360).end();
+                                move('.section4 img.sport').rotate(-360).end();
+                                move('.section4 img.edition').rotate(-360).end();
+                                move('.section4 h4.primary').scale(1).end();
+                                move('.section4 h4.sport').scale(1).end();
+                                move('.section4 h4.edition').scale(1).end();
+                                break;
+                            default:
+                                break;
+                        }
+                    },
+                    afterRender:function(){
+
+                    },
+                });
+            });
+        </script>
+
+</body>
+</html>
